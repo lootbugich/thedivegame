@@ -1,0 +1,241 @@
+[gd_scene format=3 uid="uid://cvpbl5mc2ldab"]
+
+[ext_resource type="Texture2D" uid="uid://dr5wbo8rattc0" path="res://icon.svg" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://bdun414p5em4i" path="res://scripts/plr.gd" id="1_feb5d"]
+[ext_resource type="FontFile" uid="uid://b4f7geb1y06nr" path="res://other/Retro Gaming.ttf" id="3_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://bm4nxx0sfscm0" path="res://sprites/1.png" id="3_vef74"]
+[ext_resource type="Texture2D" uid="uid://dwoeb7mxshwqg" path="res://sprites/2.png" id="4_hve3p"]
+[ext_resource type="Texture2D" uid="uid://bugfpducrmrps" path="res://sprites/3.png" id="5_mfdv2"]
+[ext_resource type="Texture2D" uid="uid://begopsn6suvd0" path="res://sprites/4.png" id="6_iotsf"]
+[ext_resource type="Texture2D" uid="uid://iwl68r1dndqj" path="res://sprites/5.png" id="7_lc2xo"]
+[ext_resource type="Texture2D" uid="uid://dykrkbw06tkpk" path="res://sprites/6.png" id="8_215e1"]
+[ext_resource type="Texture2D" uid="uid://c8uqtijspqm74" path="res://sprites/Sprite-0009.png" id="9_iotsf"]
+[ext_resource type="Texture2D" uid="uid://b04nhjc7ohsqo" path="res://sprites/Sprite-00091.png" id="10_lc2xo"]
+[ext_resource type="Texture2D" uid="uid://b7owbm627l64" path="res://sprites/Sprite-000912.png" id="11_215e1"]
+[ext_resource type="Texture2D" uid="uid://cy6itjv10pjpb" path="res://sprites/BUBBLE.png" id="13_lc2xo"]
+[ext_resource type="Script" uid="uid://cq0ri1nkhfb2r" path="res://scripts/bubble.gd" id="14_215e1"]
+[ext_resource type="Script" uid="uid://b1p5mtekruysk" path="res://tile_map_layer.gd" id="15_7sc4i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ms7kp"]
+size = Vector2(37, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ms7kp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vef74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hve3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mfdv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_iotsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lc2xo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_215e1")
+}],
+"loop": 1,
+"name": &"dive",
+"speed": 7.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_iotsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lc2xo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_215e1")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ms7kp"]
+lifetime_randomness = 0.74
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2.52, 1, 1)
+gravity = Vector3(0, -98, 0)
+scale_min = 0.7
+
+[sub_resource type="TileSet" id="TileSet_ms7kp"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
+
+[node name="game" type="Node2D" unique_id=1751444968]
+
+[node name="plr" type="CharacterBody2D" parent="." unique_id=1476590394]
+position = Vector2(245, 118)
+script = ExtResource("1_feb5d")
+
+[node name="bg" type="ColorRect" parent="plr" unique_id=455382386]
+z_index = -50
+offset_left = -128.0
+offset_top = -100.0
+offset_right = 128.0
+offset_bottom = 100.0
+color = Color(0, 0, 0, 1)
+
+[node name="line_lol" type="Line2D" parent="plr" unique_id=1318068288]
+position = Vector2(-128, -100)
+points = PackedVector2Array(0, 48, 256, 48)
+width = 2.0
+
+[node name="ColorRect" type="ColorRect" parent="plr/line_lol" unique_id=889040104]
+offset_right = 256.0
+offset_bottom = 48.0
+color = Color(0, 0, 0, 1)
+
+[node name="labels" type="StaticBody2D" parent="plr" unique_id=274175437]
+position = Vector2(-128, -100)
+
+[node name="Icon" type="Sprite2D" parent="plr/labels" unique_id=63690731]
+position = Vector2(130.5, 24)
+scale = Vector2(0.52343756, 0.25)
+texture = ExtResource("1_80nbo")
+
+[node name="press_lab" type="Label" parent="plr/labels" unique_id=1867365263]
+offset_left = 176.0
+offset_top = 24.0
+offset_right = 276.00006
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("3_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "ATM"
+metadata/_edit_use_anchors_ = true
+
+[node name="press" type="Label" parent="plr/labels" unique_id=883550611]
+offset_left = 217.0
+offset_top = 24.0
+offset_right = 270.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("3_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "1100"
+
+[node name="hp_lab" type="Label" parent="plr/labels" unique_id=1844470860]
+offset_left = 177.0
+offset_top = 6.0
+offset_right = 277.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("3_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "HP "
+
+[node name="hp" type="Label" parent="plr/labels" unique_id=2052238694]
+offset_left = 217.0
+offset_top = 6.0
+offset_right = 267.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("3_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "100"
+
+[node name="o2_lab" type="Label" parent="plr/labels" unique_id=1511600762]
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 108.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("3_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "0 "
+metadata/_edit_use_anchors_ = true
+
+[node name="o2_lab2" type="Label" parent="plr/labels" unique_id=947577425]
+offset_left = 18.0
+offset_top = 32.0
+offset_right = 118.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_fc0e3")
+theme_override_font_sizes/font_size = 8
+text = "2"
+metadata/_edit_use_anchors_ = true
+
+[node name="o2" type="Label" parent="plr/labels" unique_id=1766990392]
+offset_left = 36.0
+offset_top = 24.0
+offset_right = 84.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("3_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "100"
+metadata/_edit_use_anchors_ = true
+
+[node name="dft_lab" type="Label" parent="plr/labels" unique_id=1204514760]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 108.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("3_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "D "
+metadata/_edit_use_anchors_ = true
+
+[node name="dft_lab2" type="Label" parent="plr/labels" unique_id=2044118707]
+offset_left = 18.0
+offset_top = 14.0
+offset_right = 27.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("3_fc0e3")
+theme_override_font_sizes/font_size = 8
+text = "ft"
+metadata/_edit_use_anchors_ = true
+
+[node name="Dft" type="Label" parent="plr/labels" unique_id=75026466]
+offset_left = 36.0
+offset_top = 6.0
+offset_right = 79.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("3_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "10000"
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="Sprite2D" parent="plr" unique_id=1456667820]
+visible = false
+position = Vector2(0, -7.6293945e-06)
+scale = Vector2(0.35937494, 0.18749991)
+texture = ExtResource("1_80nbo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plr" unique_id=545577110]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_ms7kp")
+
+[node name="anim" type="AnimatedSprite2D" parent="plr" unique_id=1567743348]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ms7kp")
+animation = &"dive"
+frame_progress = 0.60565925
+
+[node name="Camera2D" type="Camera2D" parent="plr" unique_id=1373708144]
+
+[node name="bubble" type="GPUParticles2D" parent="plr" unique_id=132559003]
+texture_filter = 1
+position = Vector2(13, 0)
+amount = 5
+texture = ExtResource("13_lc2xo")
+process_material = SubResource("ParticleProcessMaterial_ms7kp")
+script = ExtResource("14_215e1")
+
+[node name="right" type="Marker2D" parent="plr" unique_id=344927515]
+position = Vector2(11, 0)
+
+[node name="left" type="Marker2D" parent="plr" unique_id=1928533866]
+position = Vector2(-12, 0)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=687775436]
+tile_set = SubResource("TileSet_ms7kp")
+script = ExtResource("15_7sc4i")
+
+[node name="TileMap" type="TileMap" parent="." unique_id=1932296839]
+format = 2
